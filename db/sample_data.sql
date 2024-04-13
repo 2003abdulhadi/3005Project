@@ -326,8 +326,25 @@ INSERT INTO RoomBookings (RoomID, StartTime, EndTime) VALUES
 (4, '2023-04-18 10:00:00', '2023-04-18 11:00:00');
 
 
--- Insert Equipment, 20 pieces including weights, machines, etc.
 INSERT INTO Equipment (EquipmentType, Name, Description, Condition) VALUES
-('Weights', '10kg Dumbbell', '10 kg dumbbell pair', 'Good Condition'),
-('Machines', 'Treadmill', 'High-speed treadmill', 'Needs Maintenance');
--- More equipment up to 20 pieces
+('Weights', '10kg Dumbbell', 'Durable iron dumbbells for weight training', 'Good Condition'),
+('Machines', 'Treadmill', 'High-speed treadmill for cardio workouts', 'Needs Maintenance'),
+('Machines', 'Elliptical', 'Low impact cardio machine', 'Good Condition'),
+('Weights', '20kg Kettlebell', 'Heavy kettlebell for strength training', 'Good Condition'),
+('Machines', 'Stationary Bike', 'Adjustable stationary bike for cycling', 'In Service'),
+('Weights', 'Barbell Set', 'Complete barbell set with various weights', 'Good Condition'),
+('Machines', 'Rowing Machine', 'Full-body workout rowing machine', 'In Service'),
+('Machines', 'Leg Press Machine', 'Machine for targeted leg workouts', 'Good Condition'),
+('Accessories', 'Yoga Mat', 'Non-slip yoga mat for floor exercises', 'Good Condition'),
+('Accessories', 'Resistance Bands', 'Set of varying resistance bands', 'Good Condition'),
+('Machines', 'Smith Machine', 'Multipurpose workout machine', 'Needs Maintenance'),
+('Weights', 'Bench Press', 'Adjustable bench for press workouts', 'Good Condition'),
+('Weights', 'Medicine Ball 5kg', 'Heavy ball used for dynamic strength exercises', 'Good Condition'),
+('Accessories', 'Jump Rope', 'High-speed jump rope for cardio', 'Good Condition'),
+('Machines', 'Cable Crossover', 'Versatile cable machine for various exercises', 'In Service'),
+('Accessories', 'Foam Roller', 'Foam roller for muscle recovery and yoga', 'Good Condition'),
+('Weights', 'Adjustable Dumbbells', 'Dumbbells with adjustable weights for versatile training', 'Good Condition'),
+('Accessories', 'Weighted Vest 10kg', 'Vest with added weight for resistance training', 'Good Condition'),
+('Machines', 'Hack Squat Machine', 'Machine designed for squatting at an angle', 'Needs Maintenance'),
+('Accessories', 'Exercise Ball', 'Large ball used for balance and core training', 'Good Condition');
+
