@@ -252,7 +252,51 @@ INSERT INTO PlanWorkouts (PlanID, WorkoutID) VALUES
 -- Note: UserID and SubscriptionTypeID must be valid INTs
 INSERT INTO Subscriptions (UserID, SubscriptionType, SubscriptionTypeID, SubscriptionDate) VALUES
 (3, 'Trainer', 1, '2021-09-01'),
-(4, 'Trainer', 1, '2021-09-02');
+(4, 'Trainer', 1, '2021-09-02'),
+(5, 'Trainer', 2, '2021-09-05'),
+(6, 'Trainer', 2, '2021-09-06'),
+(7, 'Trainer', 3, '2021-09-07'),
+(8, 'Trainer', 3, '2021-09-08'),
+(9, 'Trainer', 4, '2021-09-10'),
+(10, 'Trainer', 4, '2021-09-11'),
+(11, 'Trainer', 5, '2021-09-12'),
+(12, 'Trainer', 5, '2021-09-13'),
+
+-- Subscribing users to classes
+(13, 'Class', 1, '2021-09-15'),
+(14, 'Class', 1, '2021-09-16'),
+(15, 'Class', 2, '2021-09-17'),
+(16, 'Class', 2, '2021-09-18'),
+(17, 'Class', 3, '2021-09-19'),
+(18, 'Class', 3, '2021-09-20'),
+(19, 'Class', 4, '2021-09-22'),
+(20, 'Class', 4, '2021-09-23'),
+(21, 'Class', 5, '2021-09-24'),
+(22, 'Class', 5, '2021-09-25'),
+
+-- Subscribing users to plans
+(23, 'Plan', 1, '2021-09-27'),
+(24, 'Plan', 1, '2021-09-28'),
+(25, 'Plan', 2, '2021-09-29'),
+(26, 'Plan', 2, '2021-09-30'),
+(27, 'Plan', 3, '2021-10-01'),
+(28, 'Plan', 3, '2021-10-02'),
+(29, 'Plan', 4, '2021-10-04'),
+(30, 'Plan', 4, '2021-10-05'),
+(31, 'Plan', 5, '2021-10-06'),
+(32, 'Plan', 5, '2021-10-07'),
+
+-- Additional mixed subscriptions
+(33, 'Trainer', 6, '2021-10-09'),
+(34, 'Class', 6, '2021-10-10'),
+(35, 'Plan', 6, '2021-10-11'),
+(36, 'Trainer', 7, '2021-10-13'),
+(37, 'Class', 7, '2021-10-14'),
+(38, 'Plan', 7, '2021-10-15'),
+(39, 'Trainer', 8, '2021-10-17'),
+(40, 'Class', 8, '2021-10-18'),
+(41, 'Plan', 8, '2021-10-19'),
+(42, 'Trainer', 9, '2021-10-20');
 -- More subscriptions
 
 -- Insert Plans, 2-8 per trainer

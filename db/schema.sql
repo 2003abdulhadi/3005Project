@@ -8,7 +8,7 @@ END$$;
 DO $$
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'equipment_type') THEN
-        CREATE TYPE equipment_type AS ENUM ('Weights', 'Machines', 'Platforms');
+        CREATE TYPE equipment_type AS ENUM ('Weights', 'Machines', 'Platforms', 'Accessories');
     END IF;
 END$$;
 DO $$
