@@ -23,6 +23,12 @@ BEGIN
         CREATE TYPE subscription_type AS ENUM('Plan', 'Class', 'Trainer');
     END IF;
 END$$;
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'session_type') THEN
+        CREATE TYPE session_type AS ENUM ('Training Session', 'Class');
+    END IF;
+END$$;
 
 -- Members Table
 CREATE TABLE Members (
@@ -154,6 +160,13 @@ CREATE TABLE Classes (
     FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID)
 );
 
+CREATE TABLE Sessions (
+    SessionID SERIAL PRIMARY KEY,
+    UserID INT NOT NULL,
+    SessionType session_type NOT NULL,
+    SessionTypeID INT NOT NULL,
+    FOREIGN KEY (UserID) REFERENCES Members(UserID)
+);
 -- Equipment Table
 CREATE TABLE Equipment (
     EquipmentID SERIAL PRIMARY KEY,

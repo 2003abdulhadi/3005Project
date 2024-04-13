@@ -248,6 +248,58 @@ INSERT INTO PlanWorkouts (PlanID, WorkoutID) VALUES
 (6, 9),  -- Functional Training
 (6, 3);  -- HIIT Session
 
+INSERT INTO Rooms (RoomName) VALUES
+('Aerobics Studio'),
+('Spin Cycle Room'),
+('Yoga Studio'),
+('Pilates Room'),
+('Free Weights Room'),
+('Cardio Equipment Room'),
+('CrossFit Box'),
+('Dance Studio'),
+('Martial Arts Dojo'),
+('Functional Training Zone');
+
+
+INSERT INTO Classes (TrainerID, RoomID, StartTime, EndTime, Frequency) VALUES
+-- First set of classes
+(1, 1, '08:00', '09:00', 'MWF'),  -- Trainer 1 in Room 1 (Morning Slot)
+(2, 2, '08:00', '09:00', 'MWF'),  -- Trainer 2 in Room 2 (Morning Slot)
+(3, 3, '08:00', '09:00', 'MWF'),  -- Trainer 3 in Room 3 (Morning Slot)
+(4, 4, '08:00', '09:00', 'MWF'),  -- Trainer 4 in Room 4 (Morning Slot)
+
+-- Second set of classes for each room to ensure no overlap with different timings or days
+(1, 1, '10:00', '11:00', 'TuTh'),  -- Trainer 1 in Room 1 again, but different times (Late Morning Slot)
+(2, 2, '10:00', '11:00', 'TuTh'),  -- Trainer 2 in Room 2 again, different times (Late Morning Slot)
+(3, 3, '10:00', '11:00', 'TuTh'),  -- Trainer 3 in Room 3, different times (Late Morning Slot)
+(4, 4, '10:00', '11:00', 'TuTh');  -- Trainer 4 in Room 4, different times (Late Morning Slot)
+
+-- Room bookings for classes (Note: Assuming dates need to be dynamically set or are set as examples here)
+INSERT INTO RoomBookings (RoomID, StartTime, EndTime) VALUES
+-- Bookings for MWF classes from 8:00 AM to 9:00 AM
+(1, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
+(1, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
+(1, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
+(2, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
+(2, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
+(2, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
+(3, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
+(3, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
+(3, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
+(4, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
+(4, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
+(4, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
+
+-- Bookings for TTh classes from 10:00 AM to 11:00 AM
+(1, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
+(1, '2023-04-18 10:00:00', '2023-04-18 11:00:00'),
+(2, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
+(2, '2023-04-18 10:00:00', '2023-04-18 11:00:00'),
+(3, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
+(3, '2023-04-18 10:00:00', '2023-04-18 11:00:00'),
+(4, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
+(4, '2023-04-18 10:00:00', '2023-04-18 11:00:00');
+
 -- Insert Subscriptions, assuming each trainer has 5-50 subscribers
 -- Note: UserID and SubscriptionTypeID must be valid INTs
 INSERT INTO Subscriptions (UserID, SubscriptionType, SubscriptionTypeID, SubscriptionDate) VALUES
@@ -317,58 +369,44 @@ INSERT INTO Routines (UserID, PlanID, Created, Frequency, Description) VALUES
 (10, 4, '2022-01-10 08:00:00', '4 days', 'Long-duration workouts designed to increase cardio fitness and endurance.');
 
 
-INSERT INTO Rooms (RoomName) VALUES
-('Aerobics Studio'),
-('Spin Cycle Room'),
-('Yoga Studio'),
-('Pilates Room'),
-('Free Weights Room'),
-('Cardio Equipment Room'),
-('CrossFit Box'),
-('Dance Studio'),
-('Martial Arts Dojo'),
-('Functional Training Zone');
+-- Insert training session entries
+INSERT INTO Sessions (UserID, SessionType, SessionTypeID) VALUES
+(11, 'Training Session', 1),
+(12, 'Training Session', 2),
+(13, 'Training Session', 3),
+(14, 'Training Session', 4),
+(15, 'Training Session', 5),
+(16, 'Training Session', 6),
+(17, 'Training Session', 7),
+(18, 'Training Session', 8),
+(19, 'Training Session', 9),
+(20, 'Training Session', 10),
+(21, 'Training Session', 11),
+(22, 'Training Session', 12),
+(23, 'Training Session', 13),
+(24, 'Training Session', 14),
+(25, 'Training Session', 15),
+(26, 'Training Session', 16),
+(27, 'Training Session', 17),
+(28, 'Training Session', 18),
+(29, 'Training Session', 19),
+(30, 'Training Session', 20);
 
-
-INSERT INTO Classes (TrainerID, RoomID, StartTime, EndTime, Frequency) VALUES
--- First set of classes
-(1, 1, '08:00', '09:00', 'MWF'),  -- Trainer 1 in Room 1 (Morning Slot)
-(2, 2, '08:00', '09:00', 'MWF'),  -- Trainer 2 in Room 2 (Morning Slot)
-(3, 3, '08:00', '09:00', 'MWF'),  -- Trainer 3 in Room 3 (Morning Slot)
-(4, 4, '08:00', '09:00', 'MWF'),  -- Trainer 4 in Room 4 (Morning Slot)
-
--- Second set of classes for each room to ensure no overlap with different timings or days
-(1, 1, '10:00', '11:00', 'TuTh'),  -- Trainer 1 in Room 1 again, but different times (Late Morning Slot)
-(2, 2, '10:00', '11:00', 'TuTh'),  -- Trainer 2 in Room 2 again, different times (Late Morning Slot)
-(3, 3, '10:00', '11:00', 'TuTh'),  -- Trainer 3 in Room 3, different times (Late Morning Slot)
-(4, 4, '10:00', '11:00', 'TuTh');  -- Trainer 4 in Room 4, different times (Late Morning Slot)
-
--- Room bookings for classes (Note: Assuming dates need to be dynamically set or are set as examples here)
-INSERT INTO RoomBookings (RoomID, StartTime, EndTime) VALUES
--- Bookings for MWF classes from 8:00 AM to 9:00 AM
-(1, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
-(1, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
-(1, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
-(2, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
-(2, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
-(2, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
-(3, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
-(3, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
-(3, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
-(4, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
-(4, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
-(4, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
-
--- Bookings for TTh classes from 10:00 AM to 11:00 AM
-(1, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
-(1, '2023-04-18 10:00:00', '2023-04-18 11:00:00'),
-(2, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
-(2, '2023-04-18 10:00:00', '2023-04-18 11:00:00'),
-(3, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
-(3, '2023-04-18 10:00:00', '2023-04-18 11:00:00'),
-(4, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
-(4, '2023-04-18 10:00:00', '2023-04-18 11:00:00');
-
+-- Insert class entries based on subscriptions
+INSERT INTO Sessions (UserID, SessionType, SessionTypeID) VALUES
+(13, 'Class', 1),
+(14, 'Class', 1),
+(15, 'Class', 2),
+(16, 'Class', 2),
+(17, 'Class', 3),
+(18, 'Class', 3),
+(19, 'Class', 4),
+(20, 'Class', 4),
+(21, 'Class', 5),
+(22, 'Class', 5),
+(34, 'Class', 6),
+(37, 'Class', 7),
+(40, 'Class', 8);
 
 INSERT INTO Equipment (EquipmentType, Name, Description, Condition) VALUES
 ('Weights', '10kg Dumbbell', 'Durable iron dumbbells for weight training', 'Good Condition'),
