@@ -30,7 +30,6 @@ BEGIN
     END IF;
 END$$;
 
--- Members Table
 CREATE TABLE Members (
     UserID SERIAL PRIMARY KEY,
     Username VARCHAR(255) UNIQUE NOT NULL,
@@ -41,7 +40,6 @@ CREATE TABLE Members (
     Height_cm INT NOT NULL
 );
 
--- Goals Table
 CREATE TABLE Goals (
     GoalID SERIAL PRIMARY KEY,
     UserID INT NOT NULL,
@@ -54,7 +52,6 @@ CREATE TABLE Goals (
     FOREIGN KEY (UserID) REFERENCES Members(UserID)
 );
 
--- Subscriptions Table
 CREATE TABLE Subscriptions (
     SubscriptionID SERIAL PRIMARY KEY,
     UserID INT NOT NULL,
@@ -64,20 +61,17 @@ CREATE TABLE Subscriptions (
     FOREIGN KEY (UserID) REFERENCES Members(UserID)
 );
 
--- Exercise Table
 CREATE TABLE Exercises (
     ExerciseID SERIAL PRIMARY KEY,
     Activity VARCHAR(255) NOT NULL
 );
 
--- Workout Table
 CREATE TABLE Workouts (
     WorkoutID SERIAL PRIMARY KEY,
     Description TEXT,
     Frequency INT NOT NULL
 );
 
--- WorkoutExercises Join Table
 CREATE TABLE WorkoutExercises (
     WorkoutID INT NOT NULL,
     ExerciseID INT NOT NULL,
@@ -88,13 +82,14 @@ CREATE TABLE WorkoutExercises (
     PRIMARY KEY (WorkoutID, ExerciseID)
 );
 
--- Plans Table
 CREATE TABLE Plans (
     PlanID SERIAL PRIMARY KEY,
-    Description TEXT
+    Description TEXT,
+    TrainerID INT,
+    FOREIGN KEY (TrainerID) REFERENCES Trainers(TrainerID)
 );
 
--- PlanWorkouts Join Table
+
 CREATE TABLE PlanWorkouts (
     PlanID INT NOT NULL,
     WorkoutID INT NOT NULL,
@@ -103,7 +98,6 @@ CREATE TABLE PlanWorkouts (
     PRIMARY KEY (PlanID, WorkoutID)
 );
 
--- Routines Table
 CREATE TABLE Routines (
     RoutineID SERIAL PRIMARY KEY,
     UserID INT NOT NULL,
@@ -115,14 +109,12 @@ CREATE TABLE Routines (
     FOREIGN KEY (PlanID) REFERENCES Plans(PlanID)
 );
 
--- Trainer Table
 CREATE TABLE Trainers (
     TrainerID INT PRIMARY KEY,
     CertifiedDate TIMESTAMP NOT NULL,
     FOREIGN KEY (TrainerID) REFERENCES Members(UserID)
 );
 
--- TrainingSessions Table
 CREATE TABLE TrainingSessions (
     SessionID SERIAL PRIMARY KEY,
     TrainerID INT NOT NULL,
@@ -133,13 +125,11 @@ CREATE TABLE TrainingSessions (
     FOREIGN KEY (MemberID) REFERENCES Members(UserID)
 );
 
--- Room Table
 CREATE TABLE Rooms (
     RoomID SERIAL PRIMARY KEY,
     RoomName VARCHAR(255) UNIQUE NOT NULL
 );
 
--- RoomBookings Table
 CREATE TABLE RoomBookings (
     BookingID SERIAL PRIMARY KEY,
     RoomID INT NOT NULL,
@@ -148,17 +138,17 @@ CREATE TABLE RoomBookings (
     FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID)
 );
 
--- Class Table
+
 CREATE TABLE Classes (
     ClassID SERIAL PRIMARY KEY,
     TrainerID INT NOT NULL,
     RoomID INT NOT NULL,
-    StartTime TIME NOT NULL,
-    EndTime TIME NOT NULL,
-    Frequency VARCHAR(255),
+    StartTime TIMESTAMP NOT NULL,
+    EndTime TIMESTAMP NOT NULL,
     FOREIGN KEY (TrainerID) REFERENCES Trainers(TrainerID),
     FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID)
 );
+
 
 CREATE TABLE Sessions (
     SessionID SERIAL PRIMARY KEY,
@@ -167,7 +157,7 @@ CREATE TABLE Sessions (
     SessionTypeID INT NOT NULL,
     FOREIGN KEY (UserID) REFERENCES Members(UserID)
 );
--- Equipment Table
+
 CREATE TABLE Equipment (
     EquipmentID SERIAL PRIMARY KEY,
     EquipmentType equipment_type NOT NULL,

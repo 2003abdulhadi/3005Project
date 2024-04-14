@@ -1,9 +1,9 @@
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
-# Connection parameters
+# Connection parameters, update for your user
 conn_params = {
-    "dbname": "postgres",  # connect to default database to check/create our target database
+    "dbname": "postgres",
     "user": "emkm9",
     "password": "password",
     "host": "localhost",
@@ -60,7 +60,6 @@ def connect_to_db():
 
 
 def is_database_empty(conn):
-    """Check if the database is empty by verifying each table has no data."""
     cur = conn.cursor()
     cur.execute(
         "SELECT table_name FROM information_schema.tables "
@@ -68,14 +67,14 @@ def is_database_empty(conn):
     )
     tables = cur.fetchall()
     if not tables:
-        return True  # No tables, database is definitely empty
+        return True
 
     for (table,) in tables:
         cur.execute(f"SELECT EXISTS (SELECT 1 FROM {table} LIMIT 1);")
         if cur.fetchone()[0]:
-            return False  # Found a table with data, database is not empty
+            return False
 
-    return True  # No data found in any table
+    return True
 
 
 def load_sample_data(conn, filepath):
@@ -85,11 +84,9 @@ def load_sample_data(conn, filepath):
 
 
 def create_tables_from_schema(conn, filepath):
-    
     with conn.cursor() as cur:
         with open(filepath, "r") as file:
             cur.execute(file.read())
-
 
 
 def query_all_tables(conn):
@@ -121,7 +118,7 @@ def query_all_tables(conn):
 
 
 def main():
-    drop_database()  # Drop the existing database to start fresh
+    drop_database()
     create_database()
     conn = connect_to_db()
     if conn is not None:
@@ -132,7 +129,7 @@ def main():
             load_sample_data(conn, "sample_data.sql")
         else:
             print("Database is already populated.")
-        query_all_tables(conn)  # Moved outside of the 'if' to ensure it runs regardless
+        query_all_tables(conn)
         conn.close()
     else:
         print("Unable to connect to the database.")

@@ -1,4 +1,3 @@
--- Correct INSERT for Members, assuming UserID is SERIAL and auto-generated
 INSERT INTO Members (Username, Email, Name, JoinDate, Weight_kg, Height_cm) VALUES
 ('user1', 'user1@example.com', 'User One', '2021-09-01', 70, 175),
 ('user2', 'user2@example.com', 'User Two', '2021-08-01', 80, 180),
@@ -52,8 +51,6 @@ INSERT INTO Members (Username, Email, Name, JoinDate, Weight_kg, Height_cm) VALU
 ('user50', 'user50@example.com', 'User Fifty', '2017-08-01', 68, 168);
 
 
--- Insert Goals for each member, assuming 2-5 goals per member
--- Note: UserID must be valid INT referencing a Member's UserID
 INSERT INTO Goals (UserID, StartDate, EndDate, GoalType, GoalAmount, Completed) VALUES
 (1, '2021-09-02', '2021-12-01', 'Lose weight', 5, FALSE),
 (1, '2021-09-02', '2022-01-01', 'Gain weight', 3, TRUE),
@@ -75,10 +72,7 @@ INSERT INTO Goals (UserID, StartDate, EndDate, GoalType, GoalAmount, Completed) 
 (9, '2021-01-02', '2022-09-01', 'Gain weight', 5, TRUE),
 (10, '2020-12-02', '2021-03-01', 'Timed', 20, FALSE),
 (10, '2020-12-02', '2022-10-01', 'Frequency', 22, TRUE);
--- More goals, randomize the values and assign to members
 
--- Insert Trainers, choosing 10 members to be trainers
--- Note: TrainerID must be a valid Member's UserID
 INSERT INTO Trainers (TrainerID, CertifiedDate) VALUES
 (1, '2021-08-20'),
 (2, '2021-07-15'),
@@ -90,7 +84,7 @@ INSERT INTO Trainers (TrainerID, CertifiedDate) VALUES
 (8, '2021-01-15'),
 (9, '2020-12-10'),
 (10, '2020-11-05');
--- More trainers up to 10
+
 INSERT INTO TrainingSessions (TrainerID, MemberID, StartTime, EndTime) VALUES
 (1, 11, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
 (1, 12, '2023-04-15 09:30:00', '2023-04-15 10:30:00'),
@@ -158,52 +152,52 @@ INSERT INTO Workouts (Description, Frequency) VALUES
 ('Bootcamp - Combination of strength and cardio', 4);
 
 INSERT INTO WorkoutExercises (WorkoutID, ExerciseID, Sets, Reps) VALUES
--- Cardio Blast - High intensity cardio for fat loss
+-- Cardio Blast
 (1, 1, 1, 20),  -- Treadmill Running, 20 minutes
 (1, 2, 1, 30),  -- Stationary Bike, 30 minutes
 (1, 3, 1, 15),  -- Elliptical Trainer, 15 minutes
 
--- Strength Training - Full body workout
+-- Strength Training
 (2, 6, 4, 8),   -- Bench Press, 4 sets of 8 reps
 (2, 7, 3, 6),   -- Deadlift, 3 sets of 6 reps
 (2, 8, 3, 10),  -- Squat, 3 sets of 10 reps
 (2, 10, 3, 12), -- Lat Pull Down, 3 sets of 12 reps
 
--- HIIT Session - Quick, intense bursts
+-- HIIT Session
 (3, 24, 4, 30), -- Kettlebell Swing, 4 sets of 30 reps
 (3, 22, 4, 15), -- Burpees, 4 sets of 15 reps
 (3, 21, 4, 20), -- Lunge, 4 sets of 20 reps
 
--- Lower Body Strength - Focus on legs and glutes
+-- Lower Body Strength
 (4, 8, 4, 10),  -- Squat, 4 sets of 10 reps
 (4, 9, 4, 12),  -- Leg Press, 4 sets of 12 reps
 (4, 16, 4, 15), -- Leg Extension, 4 sets of 15 reps
 
--- Upper Body Strength - Build muscle in arms, chest, and back
+-- Upper Body Strength
 (5, 6, 4, 8),   -- Bench Press, 4 sets of 8 reps
 (5, 11, 4, 10), -- Shoulder Press, 4 sets of 10 reps
 (5, 12, 3, 12), -- Barbell Curl, 3 sets of 12 reps
 
--- Core Strengthening - Abdominal and lower back exercises
+-- Core Strengthening
 (6, 23, 4, 25), -- Sit-ups, 4 sets of 25 reps
 (6, 20, 3, 60), -- Plank, 3 sets of 60 seconds
 (6, 19, 3, 15), -- Push Up, 3 sets of 15 reps
 
--- Endurance Training - Long duration, low intensity
+-- Endurance Training
 (7, 1, 1, 40),  -- Treadmill Running, 40 minutes
 (7, 2, 1, 45),  -- Stationary Bike, 45 minutes
 (7, 4, 1, 30),  -- Rowing Machine, 30 minutes
 
--- Flexibility Workout - Yoga and stretching routines
+-- Flexibility Workout
 (8, 28, 5, 10), -- Yoga Stretch, 5 stretches for 10 minutes total
 (8, 29, 5, 10), -- Pilates Routine, 5 routines for 10 minutes total
 
--- Functional Training - Exercises to improve daily activities
+-- Functional Training
 (9, 25, 4, 12), -- Box Jump, 4 sets of 12 reps
 (9, 26, 3, 15), -- Battle Ropes, 3 sets of 15 reps
 (9, 21, 4, 20), -- Lunge, 4 sets of 20 reps
 
--- Bootcamp - Combination of strength and cardio
+-- Bootcamp
 (10, 6, 3, 10),  -- Bench Press, 3 sets of 10 reps
 (10, 8, 3, 10),  -- Squat, 3 sets of 10 reps
 (10, 22, 4, 15), -- Burpees, 4 sets of 15 reps
@@ -260,48 +254,31 @@ INSERT INTO Rooms (RoomName) VALUES
 ('Martial Arts Dojo'),
 ('Functional Training Zone');
 
+INSERT INTO Classes (TrainerID, RoomID, StartTime, EndTime) VALUES
+(1, 1, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
+(2, 2, '2023-04-15 10:00:00', '2023-04-15 11:00:00'),
+(3, 3, '2023-04-16 08:00:00', '2023-04-16 09:00:00'),
+(4, 4, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
+(5, 5, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
+(6, 6, '2023-04-17 10:00:00', '2023-04-17 11:00:00'),
+(7, 1, '2023-04-18 08:00:00', '2023-04-18 09:00:00'),
+(8, 2, '2023-04-18 10:00:00', '2023-04-18 11:00:00'),
+(9, 3, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
+(10, 4, '2023-04-19 10:00:00', '2023-04-19 11:00:00');
 
-INSERT INTO Classes (TrainerID, RoomID, StartTime, EndTime, Frequency) VALUES
--- First set of classes
-(1, 1, '08:00', '09:00', 'MWF'),  -- Trainer 1 in Room 1 (Morning Slot)
-(2, 2, '08:00', '09:00', 'MWF'),  -- Trainer 2 in Room 2 (Morning Slot)
-(3, 3, '08:00', '09:00', 'MWF'),  -- Trainer 3 in Room 3 (Morning Slot)
-(4, 4, '08:00', '09:00', 'MWF'),  -- Trainer 4 in Room 4 (Morning Slot)
-
--- Second set of classes for each room to ensure no overlap with different timings or days
-(1, 1, '10:00', '11:00', 'TuTh'),  -- Trainer 1 in Room 1 again, but different times (Late Morning Slot)
-(2, 2, '10:00', '11:00', 'TuTh'),  -- Trainer 2 in Room 2 again, different times (Late Morning Slot)
-(3, 3, '10:00', '11:00', 'TuTh'),  -- Trainer 3 in Room 3, different times (Late Morning Slot)
-(4, 4, '10:00', '11:00', 'TuTh');  -- Trainer 4 in Room 4, different times (Late Morning Slot)
-
--- Room bookings for classes (Note: Assuming dates need to be dynamically set or are set as examples here)
 INSERT INTO RoomBookings (RoomID, StartTime, EndTime) VALUES
--- Bookings for MWF classes from 8:00 AM to 9:00 AM
 (1, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
-(1, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
-(1, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
-(2, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
-(2, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
-(2, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
-(3, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
-(3, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
-(3, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
-(4, '2023-04-15 08:00:00', '2023-04-15 09:00:00'),
-(4, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
-(4, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
-
--- Bookings for TTh classes from 10:00 AM to 11:00 AM
-(1, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
-(1, '2023-04-18 10:00:00', '2023-04-18 11:00:00'),
-(2, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
-(2, '2023-04-18 10:00:00', '2023-04-18 11:00:00'),
-(3, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
-(3, '2023-04-18 10:00:00', '2023-04-18 11:00:00'),
+(2, '2023-04-15 10:00:00', '2023-04-15 11:00:00'),
+(3, '2023-04-16 08:00:00', '2023-04-16 09:00:00'),
 (4, '2023-04-16 10:00:00', '2023-04-16 11:00:00'),
-(4, '2023-04-18 10:00:00', '2023-04-18 11:00:00');
+(5, '2023-04-17 08:00:00', '2023-04-17 09:00:00'),
+(6, '2023-04-17 10:00:00', '2023-04-17 11:00:00'),
+(1, '2023-04-18 08:00:00', '2023-04-18 09:00:00'),
+(2, '2023-04-18 10:00:00', '2023-04-18 11:00:00'),
+(3, '2023-04-19 08:00:00', '2023-04-19 09:00:00'),
+(4, '2023-04-19 10:00:00', '2023-04-19 11:00:00');
 
--- Insert Subscriptions, assuming each trainer has 5-50 subscribers
--- Note: UserID and SubscriptionTypeID must be valid INTs
+
 INSERT INTO Subscriptions (UserID, SubscriptionType, SubscriptionTypeID, SubscriptionDate) VALUES
 (3, 'Trainer', 1, '2021-09-01'),
 (4, 'Trainer', 1, '2021-09-02'),
