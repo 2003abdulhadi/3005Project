@@ -1,7 +1,7 @@
 import requests
 
 def main():
-    api_base_url = "http://localhost:8000"  # Adjust if your API is hosted differently
+    api_base_url = "http://localhost:8000"
 
     while True:
         print("\nChoose an option:")
@@ -11,7 +11,6 @@ def main():
         print("4. Display member dashboard")
         print("5. Get member schedule")
         print("6. Register for a training session")
-        print("7. Register for a class")
         print("0. Exit")
         choice = input("Enter your choice: ")
 
@@ -39,9 +38,6 @@ def main():
             session_details = get_session_details()
             response = requests.post(f"{api_base_url}/register/training-session", json=session_details)
             print_response(response)
-        elif choice == '7':
-            session_details = get_class_details()
-            response = requests.post(f"{api_base_url}/register/class", json=session_details)
             print_response(response)
         elif choice == '0':
             break
@@ -74,15 +70,6 @@ def get_session_details():
         "member_id": member_id,
         "start_time": start_time,
         "end_time": end_time
-    }
-
-def get_class_details():
-    print("Enter class registration details:")
-    class_id = input("Class ID: ")
-    member_id = input("Member ID: ")
-    return {
-        "class_id": class_id,
-        "member_id": member_id
     }
 
 def print_response(response):

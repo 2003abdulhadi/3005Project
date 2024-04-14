@@ -5,7 +5,7 @@ import sys
 import os
 
 sys.path.append(os.path.abspath("../"))
-from db import connect_to_db
+from sql import connect_to_db
 
 app = FastAPI()
 

@@ -4,7 +4,7 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 # Connection parameters, update for your user
 conn_params = {
     "dbname": "postgres",
-    "user": "user",
+    "user": "emkm9",
     "password": "password",
     "host": "localhost",
 }
