@@ -14,4 +14,6 @@ Instructions
 
 The project report with the diagrams is in both the submission portal (Brendon) and in the repository as a PDF file.
 
-https://youtu.be/0jZ2SUiUnR4
+The DML and DDL SQL files are in the "sql" as "sample_data.sql" and "schema.sql"
+
+The project report with the diagrams is in both the submission portal (submitted by Brendon) and in the repository as a PDF file.
