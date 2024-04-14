@@ -1,5 +1,5 @@
 # 3005Project
-Made my Brendon Luu, Miguel Bayer, and Abdul Hadi
+Made my Brendon Luu (101233289), Miguel Bayer (101222018), and Abdul Hadi (101232811)
 usage
 
 Instructions
@@ -11,3 +11,5 @@ Instructions
 6. uvicorn server:app --reload
 7. In a new terminal, cli.py
 8. Use the cli to test the functionality
+
+The project report with the diagrams is in both the submission portal (Brendon) and in the repository as a PDF file.
