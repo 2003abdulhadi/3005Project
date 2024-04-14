@@ -13,3 +13,5 @@ Instructions
 8. Use the cli to test the functionality
 
 The project report with the diagrams is in both the submission portal (Brendon) and in the repository as a PDF file.
+
+https://youtu.be/0jZ2SUiUnR4
