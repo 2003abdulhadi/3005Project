@@ -40,6 +40,12 @@ CREATE TABLE Members (
     Height_cm INT NOT NULL
 );
 
+CREATE TABLE Trainers (
+    TrainerID INT PRIMARY KEY,
+    CertifiedDate TIMESTAMP NOT NULL,
+    FOREIGN KEY (TrainerID) REFERENCES Members(UserID)
+);
+
 CREATE TABLE Goals (
     GoalID SERIAL PRIMARY KEY,
     UserID INT NOT NULL,
@@ -109,11 +115,6 @@ CREATE TABLE Routines (
     FOREIGN KEY (PlanID) REFERENCES Plans(PlanID)
 );
 
-CREATE TABLE Trainers (
-    TrainerID INT PRIMARY KEY,
-    CertifiedDate TIMESTAMP NOT NULL,
-    FOREIGN KEY (TrainerID) REFERENCES Members(UserID)
-);
 
 CREATE TABLE TrainingSessions (
     SessionID SERIAL PRIMARY KEY,

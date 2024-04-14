@@ -291,7 +291,6 @@ INSERT INTO Subscriptions (UserID, SubscriptionType, SubscriptionTypeID, Subscri
 (11, 'Trainer', 5, '2021-09-12'),
 (12, 'Trainer', 5, '2021-09-13'),
 
--- Subscribing users to classes
 (13, 'Class', 1, '2021-09-15'),
 (14, 'Class', 1, '2021-09-16'),
 (15, 'Class', 2, '2021-09-17'),
@@ -303,7 +302,6 @@ INSERT INTO Subscriptions (UserID, SubscriptionType, SubscriptionTypeID, Subscri
 (21, 'Class', 5, '2021-09-24'),
 (22, 'Class', 5, '2021-09-25'),
 
--- Subscribing users to plans
 (23, 'Plan', 1, '2021-09-27'),
 (24, 'Plan', 1, '2021-09-28'),
 (25, 'Plan', 2, '2021-09-29'),
@@ -315,7 +313,6 @@ INSERT INTO Subscriptions (UserID, SubscriptionType, SubscriptionTypeID, Subscri
 (31, 'Plan', 5, '2021-10-06'),
 (32, 'Plan', 5, '2021-10-07'),
 
--- Additional mixed subscriptions
 (33, 'Trainer', 6, '2021-10-09'),
 (34, 'Class', 6, '2021-10-10'),
 (35, 'Plan', 6, '2021-10-11'),
@@ -326,12 +323,19 @@ INSERT INTO Subscriptions (UserID, SubscriptionType, SubscriptionTypeID, Subscri
 (40, 'Class', 8, '2021-10-18'),
 (41, 'Plan', 8, '2021-10-19'),
 (42, 'Trainer', 9, '2021-10-20');
--- More subscriptions
 
--- Insert Plans, 2-8 per trainer
-INSERT INTO Plans (Description) VALUES
-('Plan Description 1');
--- More plans
+INSERT INTO Plans (Description, TrainerID) VALUES
+('Complete Fitness Program', 1),
+('Weight Loss Bootcamp', 2),
+('Strength and Power Building', 3),
+('Endurance and Stamina Program', 4),
+('Lower Body and Core Specialization', 5),
+('Holistic Body Wellness', 6),
+('Cardiovascular Health Plan', 7),
+('High-Intensity Interval Training', 8),
+('Muscle Gain and Maintenance', 9),
+('Flexibility and Mobility Focus', 10);
+
 
 INSERT INTO Routines (UserID, PlanID, Created, Frequency, Description) VALUES
 (1, 1, '2022-01-01 08:00:00', '5 days', 'Comprehensive fitness program covering all aspects of training.'),
