@@ -3,10 +3,11 @@ Made my Brendon Luu, Miguel Bayer, and Abdul Hadi
 usage
 
 Instructions
-1. pip install -r requirements.txt
-2. cd db
-3. python api.py
-4. cd ../server
-5. uvicorn server:app --reload
-6. In a new terminal, cli.py
-7. Use the cli to test the functionality
+1. insert login details into db/api.py
+2. pip install -r requirements.txt
+3. cd db
+4. python api.py
+5. cd ../server
+6. uvicorn server:app --reload
+7. In a new terminal, cli.py
+8. Use the cli to test the functionality
